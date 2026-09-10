@@ -1,0 +1,6 @@
+{
+  "name": "Token Pump Engine · $BASH Flywheel & Google Cloud Mining",
+  "description": "Autonomous product foundry and token buyback flywheel for $BASH on pump.fun, integrating Google Cloud Compute Engine mining fleet orchestration, unMineable revenue conversion to SOL, and automated capacity-governed bonding curve injections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
