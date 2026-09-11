@@ -1,10 +1,10 @@
 services:
   web:
-    image: oven/bun:1.2
+    image: node:22-slim
     working_dir: /app
     volumes:
       - ./:/app
-    command: sh -c "bun install && bun run dev"
+    command: sh -c "npm install --no-audit --no-fund && npx tsx server.ts"
     ports:
       - "3000:3000"
     environment:
