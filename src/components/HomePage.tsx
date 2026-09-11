@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </h1>
 
           <p className="text-base sm:text-lg text-[#8a93a8] leading-relaxed mb-8">
-            An institutional-grade product foundry married with an autonomous Google Cloud Compute Engine mining fleet. 
+            An institutional-grade product foundry married with an autonomous Base44 Compute Engine mining fleet. 
             15% of all software revenue and 100% of mining payouts are liquidated to native SOL and deployed straight into the $BASH bonding curve on pump.fun.
           </p>
 
@@ -73,7 +73,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="px-6 py-3 rounded-lg bg-[#141722] hover:bg-[#1f2433] border border-[#4285F4]/40 text-[#93c5fd] font-mono text-sm transition-all flex items-center gap-2"
             >
               <Cloud className="w-4 h-4 text-[#4285F4]" />
-              Manage GCP Fleet
+              Manage Base44 Fleet
             </button>
 
             {tokenState && (
@@ -112,7 +112,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             <div>
-              <div className="text-[11px] text-[#8a93a8] font-mono">GCP MINING HASHRATE</div>
+              <div className="text-[11px] text-[#8a93a8] font-mono">Base44 MINING HASHRATE</div>
               <div className="text-xl font-bold font-mono text-[#93c5fd] mt-1">
                 {fleetSummary ? fleetSummary.totalRandomXKhs : '30.4'} kH/s
               </div>
@@ -218,8 +218,8 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <div>
               <div className="flex justify-between text-[#8a93a8] mb-2">
-                <span>Google Cloud Mining Fleet Size:</span>
-                <span className="text-blue-400 font-bold">{calcGceNodes} GCE Compute Nodes</span>
+                <span>Base44 Mining Fleet Size:</span>
+                <span className="text-blue-400 font-bold">{calcGceNodes} Base44 Compute Nodes</span>
               </div>
               <input
                 type="range"
@@ -253,7 +253,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <span className="text-white">${monthlyProductBuybacksUsd.toLocaleString()} USD</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Google Cloud Mining Share:</span>
+                  <span>Base44 Mining Share:</span>
                   <span className="text-white">${monthlyMiningBuybacksUsd.toFixed(0)} USD</span>
                 </div>
               </div>

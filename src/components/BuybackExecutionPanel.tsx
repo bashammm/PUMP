@@ -73,7 +73,7 @@ export const BuybackExecutionPanel: React.FC<BuybackExecutionPanelProps> = ({
       if (data.ok) {
         setMessage({
           type: 'success',
-          text: `Fast-forwarded 1 Hour: Accrued +${data.accruedSol.toFixed(4)} SOL from Google Cloud Fleet. Window rolled.`,
+          text: `Fast-forwarded 1 Hour: Accrued +${data.accruedSol.toFixed(4)} SOL from Base44 Fleet. Window rolled.`,
         });
         onRefresh();
       }

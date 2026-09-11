@@ -125,7 +125,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
       if (res.ok) {
         const data = await res.json();
         if (data && data.ok) {
-          setHookupSuccessMsg(`All ${data.summary?.totalWorkers || 8} Google Mining Fleet workers connected to unMineable Stratum!`);
+          setHookupSuccessMsg(`All ${data.summary?.totalWorkers || 8} Base44 Mining Fleet workers connected to unMineable Stratum!`);
           fetchFleet();
           fetchStratumStatus();
           onRefresh();
@@ -395,7 +395,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
               </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-white font-['Unbounded'] tracking-tight">
-                  Google Cloud Mining Fleet
+                  Base44 Mining Fleet
                 </h1>
                 <p className="text-xs text-[#8a93a8] mt-0.5">
                   Compute Engine Spot VM orchestration delivering constant SOL mining yield into the $BASH buyback flywheel
@@ -421,7 +421,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
               className="px-3.5 py-2 rounded-lg bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-xs font-mono transition-all flex items-center gap-1.5 shadow-md shadow-blue-900/20"
             >
               <Plus className="w-4 h-4" />
-              Deploy GCE Instance
+              Deploy Base44 Instance
             </button>
           </div>
         </div>
@@ -430,7 +430,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
         {fleetSummary && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-6 pt-6 border-t border-[#1f2433]">
             <div className="bg-[#141722] p-3 rounded-lg border border-[#1f2433]">
-              <div className="text-[10px] text-[#8a93a8] font-mono">GCE NODES</div>
+              <div className="text-[10px] text-[#8a93a8] font-mono">Base44 NODES</div>
               <div className="text-base font-bold text-white font-mono mt-0.5">
                 {fleetSummary.runningInstances}{' '}
                 <span className="text-[11px] text-[#5b6377] font-normal">/ {fleetSummary.totalInstances}</span>
@@ -455,7 +455,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
             </div>
 
             <div className="bg-[#141722] p-3 rounded-lg border border-[#1f2433]">
-              <div className="text-[10px] text-[#8a93a8] font-mono">GCP COMPUTE SPEND</div>
+              <div className="text-[10px] text-[#8a93a8] font-mono">Base44 COMPUTE SPEND</div>
               <div className="text-base font-bold text-amber-300 font-mono mt-0.5">
                 ${fleetSummary.totalCostPerHourUsd}/h
               </div>
@@ -537,7 +537,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
           }`}
         >
           <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-          Bootstrap Scripts (gcloud / bash)
+          Bootstrap Scripts (Base44 CLI / bash)
         </button>
 
         <button
@@ -791,7 +791,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
               <div className="mb-4 p-3 rounded-lg bg-purple-500/10 border border-purple-500/30 text-xs font-mono text-purple-200 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" />
                 <span>
-                  Configured ALL {instances.length} Google Cloud workers to lpminer PEARL on <strong className="text-white">stratum+tcp://pearlpow-asia.unmineable.com:3333</strong> under worker <strong className="text-white">SOL:HTN1fvHwbzKiMwh9YXZEe3eooiMdoCAs3TweWdiSZV5i.unmineable_worker_gpu</strong>!
+                  Configured ALL {instances.length} Base44 workers to lpminer PEARL on <strong className="text-white">stratum+tcp://pearlpow-asia.unmineable.com:3333</strong> under worker <strong className="text-white">SOL:HTN1fvHwbzKiMwh9YXZEe3eooiMdoCAs3TweWdiSZV5i.unmineable_worker_gpu</strong>!
                 </span>
               </div>
             )}
@@ -1015,10 +1015,10 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                 </div>
 
                 <h2 className="text-xl font-bold text-white font-['Unbounded']">
-                  Google Cloud Fleet ↔ unMineable Stratum Bridge
+                  Base44 Fleet ↔ unMineable Stratum Bridge
                 </h2>
                 <p className="text-xs text-[#8a93a8] font-mono max-w-2xl">
-                  Every Google Compute Engine instance (CPU XMRig + GPU lpminer Pearl) is actively hooked up into unMineable's Stratum servers. All hashrate and rewards stream into Solana Treasury:
+                  Every Base44 Compute instance (CPU XMRig + GPU lpminer Pearl) is actively hooked up into unMineable's Stratum servers. All hashrate and rewards stream into Solana Treasury:
                   <br />
                   <span className="text-cyan-300 font-bold break-all">SOL:HTN1fvHwbzKiMwh9YXZEe3eooiMdoCAs3TweWdiSZV5i</span>
                 </p>
@@ -1088,16 +1088,16 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
             </div>
           </div>
 
-          {/* Quick 1-Line GCE Terminal Hookup Script */}
+          {/* Quick 1-Line Base44 Terminal Hookup Script */}
           <div className="bg-[#0f1118] border border-[#1f2433] rounded-xl p-5 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
               <div>
                 <h3 className="text-sm font-bold text-white font-mono flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-emerald-400" />
-                  <span>ONE-LINE GCE & CLOUD SHELL HOOKUP COMMAND</span>
+                  <span>ONE-LINE Base44 & CLOUD SHELL HOOKUP COMMAND</span>
                 </h3>
                 <p className="text-xs text-[#8a93a8] font-mono mt-0.5">
-                  Run directly on any Google Compute Engine VM via SSH, gcloud CLI, or Startup Script to hook up immediately.
+                  Run directly on any Base44 Compute VM via SSH, Base44 CLI, or Startup Script to hook up immediately.
                 </p>
               </div>
 
@@ -1110,10 +1110,10 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                 >
                   <option value="unmineable_worker_gpu">unmineable_worker_gpu (PearlPoW GPU)</option>
                   <option value="rig1">rig1 (RandomX CPU)</option>
-                  <option value="gce-c2-us-central1-01">gce-c2-us-central1-01 (C2-16 vCPUs)</option>
-                  <option value="gce-c2-us-central1-02">gce-c2-us-central1-02 (C2-16 vCPUs)</option>
-                  <option value="gce-t2d-asia-se1-01">gce-t2d-asia-se1-01 (T2D-8 vCPUs)</option>
-                  <option value="gce-c3-sapphire-rapids">gce-c3-sapphire-rapids (C3-44 vCPUs)</option>
+                  <option value="base44-c2-us-central1-01">base44-c2-us-central1-01 (C2-16 vCPUs)</option>
+                  <option value="base44-c2-us-central1-02">base44-c2-us-central1-02 (C2-16 vCPUs)</option>
+                  <option value="base44-t2d-asia-se1-01">base44-t2d-asia-se1-01 (T2D-8 vCPUs)</option>
+                  <option value="base44-c3-sapphire-rapids">base44-c3-sapphire-rapids (C3-44 vCPUs)</option>
                 </select>
               </div>
             </div>
@@ -1129,12 +1129,12 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                   onClick={() =>
                     handleCopy(
                       `curl -sSL "${typeof window !== 'undefined' ? window.location.origin : ''}/api/gcloud/hookup/${selectedHookupWorker}" | bash`,
-                      'gce-curl-hookup'
+                      'base44-curl-hookup'
                     )
                   }
                   className="px-3 py-1.5 rounded-md bg-[#141824] hover:bg-[#1e2336] border border-cyan-500/40 text-cyan-300 text-xs font-mono flex items-center gap-1 shrink-0 transition-all"
                 >
-                  {copiedKey === 'gce-curl-hookup' ? (
+                  {copiedKey === 'base44-curl-hookup' ? (
                     <>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Copied!</span>
@@ -1158,12 +1158,12 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                   onClick={() =>
                     handleCopy(
                       `@echo off\ntitle unMineable Stratum Hookup - ${selectedHookupWorker}\nlpminer.exe --algo pearl --pool stratum+tcp://pearlpow-asia.unmineable.com:3333 --wallet SOL:HTN1fvHwbzKiMwh9YXZEe3eooiMdoCAs3TweWdiSZV5i.${selectedHookupWorker}\npause`,
-                      'gce-bat-hookup'
+                      'base44-bat-hookup'
                     )
                   }
                   className="px-3 py-1.5 rounded-md bg-[#1e1a3a] hover:bg-[#2d2757] border border-purple-500/40 text-purple-200 text-xs font-mono flex items-center gap-1 shrink-0 transition-all"
                 >
-                  {copiedKey === 'gce-bat-hookup' ? (
+                  {copiedKey === 'base44-bat-hookup' ? (
                     <>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Copied!</span>
@@ -1188,7 +1188,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                   <span>UNMINEABLE STRATUM WORKER SESSIONS</span>
                 </h3>
                 <div className="text-xs text-[#8a93a8] font-mono mt-0.5">
-                  Real-time Stratum socket telemetry for all Google Cloud fleet workers
+                  Real-time Stratum socket telemetry for all Base44 fleet workers
                 </div>
               </div>
             </div>
@@ -1323,7 +1323,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
               <div className="flex items-center gap-2">
                 <Terminal className="w-5 h-5 text-emerald-400" />
                 <h3 className="text-sm font-bold text-white font-mono">
-                  Google Cloud Shell One-Liner (gcloud compute create)
+                  Base44 Shell One-Liner (Base44 compute create)
                 </h3>
               </div>
               <button
@@ -1550,7 +1550,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                   <div className="text-base font-bold text-emerald-400 mt-1">
                     +{geminiAnalysis.expectedDailyRoiPct}%
                   </div>
-                  <div className="text-[10px] text-[#5b6377]">Net profit over GCP compute</div>
+                  <div className="text-[10px] text-[#5b6377]">Net profit over Base44 compute</div>
                 </div>
 
                 <div className="bg-[#141722] p-4 rounded-lg border border-[#1f2433]">
@@ -1591,20 +1591,20 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
             </div>
           ) : (
             <div className="text-center py-10 text-xs font-mono text-[#8a93a8]">
-              Click "Run AI Audit" to synthesize Google Cloud Spot VM pricing against WhatToMine difficulty curves.
+              Click "Run AI Audit" to synthesize Base44 Spot VM pricing against WhatToMine difficulty curves.
             </div>
           )}
         </div>
       )}
 
-      {/* MODAL: Deploy New GCE Instance */}
+      {/* MODAL: Deploy New Base44 Instance */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0f1118] border border-[#1f2433] rounded-xl max-w-md w-full p-6 space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-base font-bold text-white font-mono flex items-center gap-2">
                 <Cloud className="w-4 h-4 text-[#4285F4]" />
-                Deploy GCE Mining Instance
+                Deploy Base44 Mining Instance
               </h3>
               <button
                 onClick={() => setShowAddModal(false)}
@@ -1616,7 +1616,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
 
             <div className="space-y-3 text-xs font-mono">
               <div>
-                <label className="block text-[#8a93a8] mb-1">Google Cloud Machine Type</label>
+                <label className="block text-[#8a93a8] mb-1">Base44 Machine Type</label>
                 <select
                   value={newInstanceMachineType}
                   onChange={(e) => {
@@ -1638,7 +1638,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
               </div>
 
               <div>
-                <label className="block text-[#8a93a8] mb-1">GCP Region / Zone</label>
+                <label className="block text-[#8a93a8] mb-1">Base44 Region / Zone</label>
                 <select
                   value={newInstanceZone}
                   onChange={(e) => setNewInstanceZone(e.target.value)}
@@ -1724,7 +1724,7 @@ export const GcpMiningHub: React.FC<GcpMiningHubProps> = ({ fleetSummary, onRefr
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse"></span>
                   <h3 className="text-base font-bold text-white uppercase tracking-wider">
-                    Google Cloud Fleet lpminer Command Dispatcher
+                    Base44 Fleet lpminer Command Dispatcher
                   </h3>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                     LuckyPool Package

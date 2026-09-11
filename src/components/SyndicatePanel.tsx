@@ -119,7 +119,7 @@ export const SyndicatePanel: React.FC<SyndicatePanelProps> = ({
               Automated Liquidity Scaling & Dip-Pump Bot
             </h1>
             <p className="text-xs sm:text-sm text-[#8a93a8] font-mono leading-relaxed">
-              Orchestrates 6 distributed Google Cloud node burner wallets pumping the $BASH curve. 
+              Orchestrates 6 distributed Base44 node burner wallets pumping the $BASH curve. 
               Automatically takes profit (50% sold to Main Treasury), identifies curve dips, and deploys 35% + fresh mining SOL directly at the low to compound bonding curve velocity.
             </p>
           </div>
@@ -304,7 +304,7 @@ export const SyndicatePanel: React.FC<SyndicatePanelProps> = ({
               35% + Mining Rebuy Low
             </div>
             <p className="text-[11px] text-[#8a93a8] leading-relaxed">
-              35% of remaining sold for SOL + all fresh GCP mining yield deployed to buy dip at low!
+              35% of remaining sold for SOL + all fresh Base44 mining yield deployed to buy dip at low!
             </p>
             <div className="mt-3 pt-2 border-t border-[#1f2433] text-[10px] text-cyan-300">
               Last Dip Buy: {rebalanceCycle?.lastRebuySol.toFixed(3)} SOL
@@ -330,7 +330,7 @@ export const SyndicatePanel: React.FC<SyndicatePanelProps> = ({
               +{rebalanceCycle?.totalReinvestedSol.toFixed(2)} SOL
             </div>
             <div className="text-[10px] text-[#5b6377]">
-              35% sold + GCP mining yield
+              35% sold + Base44 mining yield
             </div>
           </div>
 
@@ -363,7 +363,7 @@ export const SyndicatePanel: React.FC<SyndicatePanelProps> = ({
               </h3>
             </div>
             <p className="text-xs text-[#8a93a8] font-mono mt-1">
-              Autonomous keypairs bound to Google Cloud compute nodes to distribute buy pressure and bypass bot cluster filters.
+              Autonomous keypairs bound to Base44 compute nodes to distribute buy pressure and bypass bot cluster filters.
             </p>
           </div>
 

@@ -39,7 +39,7 @@ export const FlywheelFlowDiagram: React.FC<FlywheelFlowDiagramProps> = ({
   fleetSummary,
   onNodeClick,
 }) => {
-  const [selectedNode, setSelectedNode] = useState<string>('gcp_mining');
+  const [selectedNode, setSelectedNode] = useState<string>('base44_mining');
 
   const nodes: NodeData[] = [
     {
@@ -69,17 +69,17 @@ export const FlywheelFlowDiagram: React.FC<FlywheelFlowDiagramProps> = ({
         'As software products pass code generation, test suites, and deployment gates in the 8-stage pipeline, fractional MRR buyback taps trigger on-chain.',
     },
     {
-      id: 'gcp_mining',
+      id: 'base44_mining',
       step: 3,
-      title: 'GCP Mining Fleet',
-      subtitle: 'Compute Engine Spot VMs',
+      title: 'Base44 Mining Fleet',
+      subtitle: 'Spot Compute VMs',
       value: `${fleetSummary ? fleetSummary.totalRandomXKhs : '30.4'} kH/s`,
       icon: <Cloud className="w-5 h-5 text-[#4285F4]" />,
       color: 'text-[#4285F4]',
       bgColor: 'bg-[#4285F4]/10',
       borderColor: 'border-[#4285F4]/30',
       description:
-        'Orchestrated Google Cloud Compute Engine Spot instances (C2, T2D, G2 GPUs) mine RandomX and kHeavyHash with 68% cost savings vs on-demand.',
+        'Orchestrated Base44 Compute Engine Spot instances (C2, T2D, G2 GPUs) mine RandomX and kHeavyHash with 68% cost savings vs on-demand.',
     },
     {
       id: 'pool_conversion',

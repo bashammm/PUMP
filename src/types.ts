@@ -90,7 +90,7 @@ export interface AuditContractSpec {
 export interface LedgerEntry {
   id: string;
   timestamp: number;
-  type: 'injection' | 'allocation' | 'delay' | 'window_roll' | 'stage_tap' | 'gcp_mining' | 'syndicate_pump' | 'harvest_50' | 'rebuy_35';
+  type: 'injection' | 'allocation' | 'delay' | 'window_roll' | 'stage_tap' | 'base44_mining' | 'syndicate_pump' | 'harvest_50' | 'rebuy_35';
   amountSol: number;
   amountUsd: number;
   source: string;
@@ -108,7 +108,7 @@ export interface TokenSnapshot {
   hashrateKhs: number;
 }
 
-// Google Cloud Mining Fleet Types
+// Base44 Mining Fleet Types
 export type GceMachineFamily = 'C2-Compute' | 'C3-NextGen' | 'T2D-AMDEpyc' | 'N2-General' | 'G2-NvidiaL4' | 'A2-NvidiaA100' | 'C3-SapphireRapids';
 export type InstanceStatus = 'RUNNING' | 'PROVISIONING' | 'STOPPED' | 'PREEMPTED';
 export type MiningAlgo = 'randomx' | 'kheavyhash' | 'autolykos2' | 'etchash' | 'fishhash' | 'pearl';

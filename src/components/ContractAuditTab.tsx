@@ -55,7 +55,7 @@ export const ContractAuditTab: React.FC = () => {
               Production Smart Contract & Audit Spec
             </h1>
             <p className="text-xs sm:text-sm text-[#8a93a8] font-mono leading-relaxed">
-              Formally verified on-chain program orchestrating capacity governance, Google Cloud mining yield aggregation, 
+              Formally verified on-chain program orchestrating capacity governance, Base44 mining yield aggregation, 
               50% main treasury profit settlements, and 35% dip rebuy injections on the pump.fun bonding curve.
             </p>
           </div>

@@ -73,7 +73,7 @@ export const UnmineableRigPanel: React.FC<UnmineableRigPanelProps> = ({ onRefres
       if (res.ok) {
         const json = await res.json();
         if (json.ok) {
-          setHookupSuccess('All Google Cloud mining fleet workers hooked up to unMineable Stratum!');
+          setHookupSuccess('All Base44 mining fleet workers hooked up to unMineable Stratum!');
           fetchLiveStats();
           if (onRefresh) onRefresh();
           setTimeout(() => setHookupSuccess(null), 6000);
@@ -132,7 +132,7 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target`
     : `[Unit]
-Description=XMRig Google Cloud & Local SOL Miner (${workerName})
+Description=XMRig Base44 & Local SOL Miner (${workerName})
 After=network.target
 
 [Service]
@@ -227,10 +227,10 @@ pause`;
                 {[
                   { name: 'rig1', type: 'CPU RandomX' },
                   { name: 'unmineable_worker_zuehjsiq', type: 'GPU Pearl' },
-                  { name: 'gce-c2-us-central1-01', type: 'GCE CPU' },
-                  { name: 'gce-c2-us-central1-02', type: 'GCE CPU' },
-                  { name: 'gce-t2d-asia-se1-01', type: 'GCE CPU' },
-                  { name: 'gce-c3-sapphire-rapids', type: 'GCE CPU' },
+                  { name: 'base44-c2-us-central1-01', type: 'Base44 CPU' },
+                  { name: 'base44-c2-us-central1-02', type: 'Base44 CPU' },
+                  { name: 'base44-t2d-asia-se1-01', type: 'Base44 CPU' },
+                  { name: 'base44-c3-sapphire-rapids', type: 'Base44 CPU' },
                 ].map((w) => (
                   <button
                     key={w.name}
@@ -640,7 +640,7 @@ pause`;
             <div className="flex items-center gap-2">
               <Server className="w-4 h-4 text-cyan-400" />
               <h3 className="text-xs font-bold text-white font-mono uppercase tracking-wider">
-                Google Cloud Mining Fleet Workers Roster
+                Base44 Mining Fleet Workers Roster
               </h3>
             </div>
             <span className="text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
@@ -663,10 +663,10 @@ pause`;
                 {(data?.workers || [
                   { name: 'rig1', rhr: '3.53 kH/s', chr: '3.53 kH/s', online: true },
                   { name: 'unmineable_worker_gpu', rhr: '104.2 MH/s', chr: '104.2 MH/s', online: true },
-                  { name: 'gce-c2-us-central1-01', rhr: '14.2 kH/s', chr: '14.2 kH/s', online: true },
-                  { name: 'gce-c2-us-central1-02', rhr: '14.1 kH/s', chr: '14.1 kH/s', online: true },
-                  { name: 'gce-t2d-asia-se1-01', rhr: '6.8 kH/s', chr: '6.8 kH/s', online: true },
-                  { name: 'gce-c3-sapphire-rapids', rhr: '38.6 kH/s', chr: '38.6 kH/s', online: true },
+                  { name: 'base44-c2-us-central1-01', rhr: '14.2 kH/s', chr: '14.2 kH/s', online: true },
+                  { name: 'base44-c2-us-central1-02', rhr: '14.1 kH/s', chr: '14.1 kH/s', online: true },
+                  { name: 'base44-t2d-asia-se1-01', rhr: '6.8 kH/s', chr: '6.8 kH/s', online: true },
+                  { name: 'base44-c3-sapphire-rapids', rhr: '38.6 kH/s', chr: '38.6 kH/s', online: true },
                 ]).map((w) => {
                   const isGpu = w.name.includes('zuehjsiq') || w.name.includes('cbv') || w.name.includes('gpu');
                   const pool = isGpu ? 'pearlpow-asia.unmineable.com:3333 (TCP)' : 'rx.unmineable.com:3333';

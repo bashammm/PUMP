@@ -31,7 +31,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
       buybackSol: (250 * 0.15) / solPrice,
       features: [
         '1 Autonomous Foundry App Generation',
-        'Google Cloud Spot Deployment script',
+        'Base44 Spot Deployment script',
         'Basic unMineable stratum connection',
         '15% ($37.50) converted to $BASH buybacks',
       ],
@@ -40,7 +40,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
       name: 'Builder',
       priceUsd: 750,
       popular: true,
-      description: 'Full product stack with dedicated GCE mining fleet setup',
+      description: 'Full product stack with dedicated Base44 mining fleet setup',
       buybackSol: (750 * 0.15) / solPrice,
       features: [
         '3 Autonomous Foundry App Deployments',

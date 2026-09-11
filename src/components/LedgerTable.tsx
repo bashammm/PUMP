@@ -21,7 +21,7 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({ ledger }) => {
   const filtered = ledger.filter((entry) => {
     if (filter === 'all') return true;
     if (filter === 'injection') return entry.type === 'injection';
-    if (filter === 'allocation') return entry.type === 'allocation' || entry.type === 'gcp_mining';
+    if (filter === 'allocation') return entry.type === 'allocation' || entry.type === 'base44_mining';
     if (filter === 'delay') return entry.type === 'delay' || entry.type === 'window_roll';
     return true;
   });
@@ -37,7 +37,7 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({ ledger }) => {
             </h2>
           </div>
           <p className="text-xs text-[#8a93a8] mt-0.5">
-            Immutable log of bonding curve buys, GCP mining liquidations, and governor events
+            Immutable log of bonding curve buys, Base44 mining liquidations, and governor events
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({ ledger }) => {
                         INJECT
                       </span>
                     )}
-                    {(item.type === 'allocation' || item.type === 'gcp_mining') && (
+                    {(item.type === 'allocation' || item.type === 'base44_mining') && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold text-[10px]">
                         <Coins className="w-3 h-3" />
                         ALLOC

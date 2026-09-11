@@ -40,7 +40,7 @@ export const InjectionChart: React.FC<InjectionChartProps> = ({ snapshots }) => 
             </h2>
           </div>
           <p className="text-xs text-[#8a93a8] mt-0.5">
-            Real-time trajectory of market capitalization, cumulative SOL injected, and GCP hashrate
+            Real-time trajectory of market capitalization, cumulative SOL injected, and Base44 hashrate
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export const InjectionChart: React.FC<InjectionChartProps> = ({ snapshots }) => 
                 : 'text-[#8a93a8] hover:text-white'
             }`}
           >
-            GCP Hashrate
+            Base44 Hashrate
           </button>
         </div>
       </div>

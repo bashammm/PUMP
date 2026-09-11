@@ -69,7 +69,7 @@ export const TokenTicker: React.FC<TokenTickerProps> = ({
             <span className="text-[10px] text-emerald-400/80 hidden sm:inline">(unMineable SOL)</span>
           </div>
 
-          {/* Google Cloud Mining Fleet */}
+          {/* Base44 Mining Fleet */}
           {fleetSummary && (
             <div className="flex items-center gap-2">
               <Server className="w-3.5 h-3.5 text-[#4285F4]" />

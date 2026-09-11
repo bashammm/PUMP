@@ -223,7 +223,7 @@ export function App() {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
             <span className="text-white font-bold">$BASH</span>
-            <span>· Autonomous Product Foundry & GCP Mining Flywheel</span>
+            <span>· Autonomous Product Foundry & Base44 Mining Flywheel</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px]">

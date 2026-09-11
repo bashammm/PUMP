@@ -47,7 +47,7 @@ export const SiteNav: React.FC<SiteNavProps> = ({
               </div>
               <div className="text-[10px] text-[#8a93a8] font-mono tracking-wider flex items-center gap-1">
                 <span>$BASH</span>
-                <span className="text-[#3b82f6]">· GCP MINING FLYWHEEL</span>
+                <span className="text-[#3b82f6]">· Base44 MINING FLYWHEEL</span>
               </div>
             </div>
           </button>
@@ -88,7 +88,7 @@ export const SiteNav: React.FC<SiteNavProps> = ({
             }`}
           >
             <Cloud className="w-3.5 h-3.5 text-[#4285F4]" />
-            GCP Mining Fleet
+            Base44 Mining Fleet
             {fleetSummary && (
               <span className="text-[10px] px-1 rounded bg-[#4285F4]/30 text-blue-200">
                 {fleetSummary.runningInstances}
@@ -159,7 +159,7 @@ export const SiteNav: React.FC<SiteNavProps> = ({
 
         {/* Live Metrics & pump.fun button */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* GCP Fleet Hashrate Pill */}
+          {/* Base44 Fleet Hashrate Pill */}
           {fleetSummary && (
             <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0f1118] border border-[#1f2433] text-xs font-mono">
               <span className="relative flex h-2 w-2">
@@ -209,7 +209,7 @@ export const SiteNav: React.FC<SiteNavProps> = ({
           onClick={() => setActiveTab('gcloud')}
           className={`px-2 py-1 rounded shrink-0 ${activeTab === 'gcloud' ? 'text-blue-400 bg-blue-500/20' : 'text-[#8a93a8]'}`}
         >
-          GCP Fleet
+          Base44 Fleet
         </button>
         <button
           onClick={() => setActiveTab('contract')}

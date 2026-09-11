@@ -142,7 +142,7 @@ export const TransparencyPage: React.FC<TransparencyPageProps> = ({
           <div className="flex items-start gap-2.5 p-3 rounded-lg bg-[#141722] border border-[#1f2433]">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
             <div>
-              <div className="font-semibold text-white">Google Cloud Spot Fleet Audited</div>
+              <div className="font-semibold text-white">Base44 Spot Fleet Audited</div>
               <div className="text-[11px] text-[#8a93a8] mt-0.5">
                 Preemptible VM monitoring guarantees lowest compute cost-to-hashrate conversion.
               </div>

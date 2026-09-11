@@ -139,8 +139,8 @@ let ledger: LedgerEntry[] = [
     type: 'allocation',
     amountSol: 0.125,
     amountUsd: 0.125 * solPriceUsd,
-    source: 'gcp_mining',
-    details: 'Google Cloud C2 Compute Fleet mining revenue converted to SOL',
+    source: 'base44_mining',
+    details: 'Base44 Compute Fleet mining revenue converted to SOL',
     txSignature: '4zWp9...GceNode1',
     reserveAfter: 0.38,
   },
@@ -200,7 +200,7 @@ let snapshots: TokenSnapshot[] = Array.from({ length: 24 }).map((_, i) => {
 let syndicateWallets: SyndicateWallet[] = [
   {
     id: 'w1',
-    label: 'Node Alpha · GCE Iowa Primary Runner',
+    label: 'Node Alpha · Base44 Iowa Primary Runner',
     address: '7uXm9Q5fL1V24kP9q8rL8n7r5g7L1h4E1K8n1K2j8ZV1',
     solBalance: 0.854,
     tokenBalance: 18_420_000,
@@ -212,7 +212,7 @@ let syndicateWallets: SyndicateWallet[] = [
   },
   {
     id: 'w2',
-    label: 'Node Beta · GCE Singapore Milan Node',
+    label: 'Node Beta · Base44 Singapore Milan Node',
     address: '3kPn4Y8xR7T12mQ5wL9vE4sK6j8H2n1B9zX4cV7mD2',
     solBalance: 0.621,
     tokenBalance: 12_850_000,
@@ -224,7 +224,7 @@ let syndicateWallets: SyndicateWallet[] = [
   },
   {
     id: 'w3',
-    label: 'Node Gamma · GCE Netherlands Spot Runner',
+    label: 'Node Gamma · Base44 Netherlands Spot Runner',
     address: '9qLt2W6vM4K89xP1nL7yE5sR8j3H1n4B2zX9cV3mF3',
     solBalance: 1.152,
     tokenBalance: 24_500_000,
@@ -347,11 +347,11 @@ pub mod bash_pump_flywheel {
         Ok(())
     }
 
-    /// Route verified Google Cloud mining yield (SOL) to the syndicate liquidity pool
+    /// Route verified Base44 mining yield (SOL) to the syndicate liquidity pool
     pub fn route_mining_yield(
         ctx: Context<RouteMiningYield>,
         amount_lamports: u64,
-        gce_node_id: String,
+        base44_node_id: String,
     ) -> Result<()> {
         require!(!ctx.accounts.flywheel_state.is_paused, FlywheelError::EnginePaused);
         require!(amount_lamports > 0, FlywheelError::ZeroYieldDeposit);
@@ -363,7 +363,7 @@ pub mod bash_pump_flywheel {
             .ok_or(FlywheelError::NumericalOverflow)?;
 
         emit!(MiningYieldRoutedEvent {
-            gce_node_id,
+            base44_node_id,
             amount_lamports,
             timestamp: Clock::get()?.unix_timestamp,
         });
@@ -517,7 +517,7 @@ pub struct FlywheelInitializedEvent {
 
 #[event]
 pub struct MiningYieldRoutedEvent {
-    pub gce_node_id: String,
+    pub base44_node_id: String,
     pub amount_lamports: u64,
     pub timestamp: i64,
 }
@@ -560,7 +560,7 @@ pub enum FlywheelError {
 };
 
 // -------------------------------------------------------------
-// Google Cloud Mining Fleet State
+// Base44 Mining Fleet State
 // -------------------------------------------------------------
 
 const UNMINEABLE_GLOBAL_CMD = 'xmrig -o rx.unmineable.com:3333 -a rx -k -u SOL:HTN1fvHwbzKiMwh9YXZEe3eooiMdoCAs3TweWdiSZV5i.rig1 -p x';
@@ -625,7 +625,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-01',
-    name: 'gce-g2-l4-gpu-01 · NVIDIA L4 Rig 1',
+    name: 'base44-g2-l4-gpu-01 · NVIDIA L4 Rig 1',
     zone: 'us-central1-a',
     machineType: 'g2-standard-8',
     family: 'G2-NvidiaL4',
@@ -656,7 +656,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-02',
-    name: 'gce-a2-a100-gpu-02 · NVIDIA A100 Rig 2',
+    name: 'base44-a2-a100-gpu-02 · NVIDIA A100 Rig 2',
     zone: 'us-central1-a',
     machineType: 'a2-highgpu-1g',
     family: 'A2-NvidiaA100',
@@ -687,7 +687,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-03',
-    name: 'gce-a3-h100-gpu-03 · NVIDIA H100 Rig 3',
+    name: 'base44-a3-h100-gpu-03 · NVIDIA H100 Rig 3',
     zone: 'us-central1-a',
     machineType: 'a3-highgpu-1g',
     family: 'A2-NvidiaA100',
@@ -718,7 +718,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-04',
-    name: 'gce-g2-l4-gpu-04 · NVIDIA L4 Rig 4',
+    name: 'base44-g2-l4-gpu-04 · NVIDIA L4 Rig 4',
     zone: 'asia-southeast1-a',
     machineType: 'g2-standard-8',
     family: 'G2-NvidiaL4',
@@ -749,7 +749,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-05',
-    name: 'gce-t4-gpu-05 · NVIDIA Tesla T4 Rig 5',
+    name: 'base44-t4-gpu-05 · NVIDIA Tesla T4 Rig 5',
     zone: 'us-central1-b',
     machineType: 'n1-standard-8',
     family: 'N1-Standard',
@@ -780,7 +780,7 @@ let gceFleet: GceMiningInstance[] = [
   },
   {
     id: 'gpu-inst-06',
-    name: 'gce-v100-gpu-06 · NVIDIA Tesla V100 Rig 6',
+    name: 'base44-v100-gpu-06 · NVIDIA Tesla V100 Rig 6',
     zone: 'us-central1-c',
     machineType: 'n1-standard-8',
     family: 'N1-Standard',
@@ -814,11 +814,7 @@ let gceFleet: GceMiningInstance[] = [
 // Initialize unMineable Stratum Hookup Engine & Synchronize Fleet
 stratumBridge.initialize(SOL_RECIPIENT, (session) => {
   const inst = gceFleet.find(
-    (i) =>
-      i.workerId === session.workerName ||
-      i.name.includes(session.workerName) ||
-      i.id === session.workerName ||
-      (session.algo === 'pearl' && i.hasGpu)
+    (i) => i.workerId === session.workerName || i.id === session.workerName
   );
   if (inst) {
     inst.unmineableHookedUp = session.status === 'CONNECTED';
@@ -837,11 +833,17 @@ stratumBridge.initialize(SOL_RECIPIENT, (session) => {
 // Auto-hookup all workers to unMineable Stratum
 const fleetWorkersToHookup = [
   'rig1',
+  'unmineable_worker_gpu',
+  'unmineable_worker_a100',
+  'unmineable_worker_h100',
+  'unmineable_worker_l4_node2',
+  'unmineable_worker_t4',
+  'unmineable_worker_v100',
   'unmineable_worker_zuehjsiq',
-  'gce-c2-us-central1-01',
-  'gce-c2-us-central1-02',
-  'gce-t2d-asia-se1-01',
-  'gce-c3-sapphire-rapids',
+  'base44-c2-us-central1-01',
+  'base44-c2-us-central1-02',
+  'base44-t2d-asia-se1-01',
+  'base44-c3-sapphire-rapids',
 ];
 stratumBridge.hookUpFleetWorkers(fleetWorkersToHookup);
 
@@ -880,7 +882,7 @@ function getFleetSummary(): GcpMiningFleetSummary {
     totalDailyYieldUsd: parseFloat(totalDailyUsd.toFixed(2)),
     netProfitDailyUsd: parseFloat(netProfitDaily.toFixed(2)),
     avgNetMarginPct: parseFloat(avgMargin.toFixed(1)),
-    spotSavingsPct: 68.4, // Google Cloud spot discount vs on-demand
+    spotSavingsPct: 68.4, // Base44 spot discount vs on-demand
     projectId: GCP_PROJECT_ID,
     defaultZone: GCP_DEFAULT_ZONE,
     solRecipient: SOL_RECIPIENT,
@@ -1109,7 +1111,7 @@ function executeBuybackInjection(source: string, requestedSol?: number): { succe
 // -------------------------------------------------------------
 
 setInterval(() => {
-  // 1. Accrue mined coins from Google Cloud Fleet
+  // 1. Accrue mined coins from Base44 Fleet
   const summary = getFleetSummary();
   if (summary.runningInstances > 0 && flywheelConfig.gcp_telemetry_enabled) {
     // 5-second slice of daily yield
@@ -1272,11 +1274,11 @@ app.post('/api/flywheel/fast-forward', (req, res) => {
   ledger.unshift({
     id: `ff-${Date.now()}`,
     timestamp: Date.now(),
-    type: 'gcp_mining',
+    type: 'base44_mining',
     amountSol: parseFloat(oneHourSol.toFixed(4)),
     amountUsd: parseFloat((oneHourSol * solPriceUsd).toFixed(2)),
     source: 'fast_forward_hour',
-    details: `Fast-Forward: Simulated 1 hour of GCE fleet mining yield (+${oneHourSol.toFixed(4)} SOL). Governor window rolled.`,
+    details: `Fast-Forward: Simulated 1 hour of Base44 fleet mining yield (+${oneHourSol.toFixed(4)} SOL). Governor window rolled.`,
     reserveAfter: parseFloat(flywheelState.buyback_reserve_sol.toFixed(4)),
   });
 
@@ -1292,7 +1294,7 @@ app.post('/api/flywheel/fast-forward', (req, res) => {
 });
 
 // -------------------------------------------------------------
-// Google Cloud Mining Fleet Endpoints (`/api/gcloud/*`)
+// Base44 Mining Fleet Endpoints (`/api/gcloud/*`)
 // -------------------------------------------------------------
 
 // Get full fleet status & summary
@@ -1304,7 +1306,7 @@ app.get('/api/gcloud/fleet', (req, res) => {
   });
 });
 
-// Launch new GCE Mining Instance
+// Launch new Base44 Mining Instance
 app.post('/api/gcloud/instances', (req, res) => {
   const { machineType = 'c2-standard-8', zone = GCP_DEFAULT_ZONE, isSpot = true, algo = 'randomx' } = req.body;
 
@@ -1368,11 +1370,11 @@ app.post('/api/gcloud/instances', (req, res) => {
     baseHash = 6.9;
   }
 
-  const instName = `gce-${machineType.slice(0, 3)}-${zone.split('-')[0]}-${String(gceFleet.length + 1).padStart(2, '0')}`;
+  const instName = `base44-${machineType.slice(0, 3)}-${zone.split('-')[0]}-${String(gceFleet.length + 1).padStart(2, '0')}`;
   const dailySol = hasGpu ? (baseHash * 0.00077) : (baseHash * 0.0016);
 
   const newInstance: GceMiningInstance = {
-    id: `gce-inst-${Date.now()}`,
+    id: `base44-inst-${Date.now()}`,
     name: instName,
     zone,
     machineType,
@@ -1410,12 +1412,12 @@ app.post('/api/gcloud/instances', (req, res) => {
   }
 
   ledger.unshift({
-    id: `gce-launch-${Date.now()}`,
+    id: `base44-launch-${Date.now()}`,
     timestamp: Date.now(),
     type: 'allocation',
     amountSol: 0,
     amountUsd: 0,
-    source: 'gcp_fleet_manager',
+    source: 'base44_fleet_manager',
     details: `Launched ${hasGpu ? 'GPU' : 'CPU'} mining instance ${instName} (${machineType}, ${isSpot ? 'Spot VM' : 'On-Demand'}) mining ${activeAlgo.toUpperCase()} with ${hasGpu ? 'lolMiner FISHHASH' : 'XMRig'}`,
     reserveAfter: flywheelState.buyback_reserve_sol,
   });
@@ -1427,7 +1429,7 @@ app.post('/api/gcloud/instances', (req, res) => {
   });
 });
 
-// Manage GCE Instance (start, stop, reboot, delete)
+// Manage Base44 Instance (start, stop, reboot, delete)
 app.patch('/api/gcloud/instances/:id', (req, res) => {
   const { id } = req.params;
   const { action } = req.body; // 'START' | 'STOP' | 'REBOOT' | 'DELETE'
@@ -1471,8 +1473,8 @@ app.post('/api/gcloud/scale', (req, res) => {
     for (let i = 0; i < toAdd; i++) {
       const num = gceFleet.length + 1;
       gceFleet.push({
-        id: `gce-inst-scaled-${Date.now()}-${i}`,
-        name: `gce-c2-scaled-${String(num).padStart(2, '0')}`,
+        id: `base44-inst-scaled-${Date.now()}-${i}`,
+        name: `base44-c2-scaled-${String(num).padStart(2, '0')}`,
         zone: GCP_DEFAULT_ZONE,
         machineType,
         family: 'C2-Compute',
@@ -1602,7 +1604,7 @@ const handleSetAllGpusPearl = (req: any, res: any) => {
   });
 };
 
-// Set ALL Workers in Google Cloud Fleet to lpminer PEARL Stratum
+// Set ALL Workers in Base44 Fleet to lpminer PEARL Stratum
 const handleSetAllWorkersLpminerPearl = (req: any, res: any) => {
   gceFleet.forEach((inst) => {
     inst.status = 'RUNNING';
@@ -1634,14 +1636,14 @@ const handleSetAllWorkersLpminerPearl = (req: any, res: any) => {
     amountSol: 0,
     amountUsd: 0,
     source: 'fleet_orchestrator',
-    details: `Configured ALL ${gceFleet.length} Google Cloud workers to lpminer PEARL: ${GPU_GLOBAL_PEARL_CMD}`,
+    details: `Configured ALL ${gceFleet.length} Base44 workers to lpminer PEARL: ${GPU_GLOBAL_PEARL_CMD}`,
     reserveAfter: flywheelState.buyback_reserve_sol,
   });
 
   res.json({
     ok: true,
     workerCount: gceFleet.length,
-    message: `All ${gceFleet.length} Google Cloud workers configured and hooked up to lpminer PEARL on ${GPU_PEARL_POOL} under SOL:${SOL_RECIPIENT}.${GPU_PEARL_WORKER}!`,
+    message: `All ${gceFleet.length} Base44 workers configured and hooked up to lpminer PEARL on ${GPU_PEARL_POOL} under SOL:${SOL_RECIPIENT}.${GPU_PEARL_WORKER}!`,
     command: GPU_GLOBAL_PEARL_CMD,
     worker: GPU_PEARL_WORKER,
     pool: GPU_PEARL_POOL,
@@ -1660,7 +1662,7 @@ app.post('/api/gcloud/scripts', (req, res) => {
   const {
     machineType = 'c2-standard-8',
     zone = GCP_DEFAULT_ZONE,
-    workerName = 'gce-worker-node',
+    workerName = 'base44-worker-node',
     algo = 'pearl',
     isSpot = true,
   } = req.body;
@@ -1681,7 +1683,7 @@ app.post('/api/gcloud/scripts', (req, res) => {
   const bashScript = isGpu
     ? `#!/bin/bash
 # ==============================================================================
-# Google Cloud AI Accelerator (GPU) Mining Rig Bootstrap
+# Base44 AI Accelerator (GPU) Mining Rig Bootstrap
 # Rig Type: ${isA100 ? 'NVIDIA A100 Tensor Core' : isL4 ? 'NVIDIA L4 Ada Lovelace' : 'GPU Accelerator'}
 # Engine: lpminer (PearlPoW Algorithm)
 # Official Package: https://pearl.luckypool.io/lpminer/lpminer-0.1.10.zip
@@ -1690,7 +1692,7 @@ app.post('/api/gcloud/scripts', (req, res) => {
 # ==============================================================================
 
 set -e
-echo "[$(date)] Provisioning Google Cloud AI Rig (${machineType}) with lpminer PearlPoW..."
+echo "[$(date)] Provisioning Base44 AI Rig (${machineType}) with lpminer PearlPoW..."
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && apt-get install -y --no-install-recommends git curl jq build-essential wget unzip tar linux-headers-$(uname -r)
@@ -1716,7 +1718,7 @@ fi
 
 cat <<EOF > /etc/systemd/system/cloud-ai-miner.service
 [Unit]
-Description=Google Cloud AI Rig lpminer Pearl (SOL Payout)
+Description=Base44 AI Rig lpminer Pearl (SOL Payout)
 After=network.target
 
 [Service]
@@ -1730,17 +1732,17 @@ EOF
 
 systemctl daemon-reload
 systemctl enable --now cloud-ai-miner.service || true
-echo "[$(date)] Google Cloud AI Rig online. Mining PearlPoW to SOL:${SOL_RECIPIENT}.${GPU_PEARL_WORKER}"
+echo "[$(date)] Base44 AI Rig online. Mining PearlPoW to SOL:${SOL_RECIPIENT}.${GPU_PEARL_WORKER}"
 `
     : `#!/bin/bash
 # ==============================================================================
-# Google Cloud High-Performance Compute Mining Node (RandomX Rigorous Rate)
+# Base44 High-Performance Compute Mining Node (RandomX Rigorous Rate)
 # Machine: ${machineType} (${zone})
 # Target Treasury SOL Address: ${SOL_RECIPIENT}
 # ==============================================================================
 
 set -e
-echo "[$(date)] Starting Rigorous Google Cloud Mining Node Provisioning..."
+echo "[$(date)] Starting Rigorous Base44 Mining Node Provisioning..."
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && apt-get install -y --no-install-recommends \\
@@ -1770,7 +1772,7 @@ fi
 # 4. Create persistent systemd daemon
 cat <<EOF > /etc/systemd/system/xmrig.service
 [Unit]
-Description=XMRig Google Cloud Autonomous Hashing Engine (Rigorous Rate)
+Description=XMRig Base44 Autonomous Hashing Engine (Rigorous Rate)
 After=network.target
 
 [Service]
@@ -1808,7 +1810,7 @@ echo "[$(date)] XMRig daemon online at rigorous rate. Mining directly to SOL Tre
     --metadata=startup-script='${bashScript.replace(/'/g, "'\\''")}' \\
     --tags=mining-fleet,bash-engine,ai-rig`;
 
-  const terraformHcl = `# Terraform definition for Google Cloud Mining Fleet
+  const terraformHcl = `# Terraform definition for Base44 Mining Fleet
 resource "google_compute_instance" "bash_miner" {
   name         = "${workerName}"
   machine_type = "${machineType}"
@@ -1914,7 +1916,7 @@ app.post('/api/gcloud/ai-optimize', async (req, res) => {
       expectedDailyRoiPct: 51.4,
       spotRiskRating: 'LOW',
       reasoning:
-        'Compute Engine C2 instances on Google Cloud offer the lowest cost-per-core when running on Spot pricing ($0.0388/hr). RandomX benefits from large L3 caches, producing 7.82 kH/s per 8 vCPUs. At current SOL price ($' +
+        'Compute Engine C2 instances on Base44 offer the lowest cost-per-core when running on Spot pricing ($0.0388/hr). RandomX benefits from large L3 caches, producing 7.82 kH/s per 8 vCPUs. At current SOL price ($' +
         solPriceUsd +
         '), this generates 0.0125 SOL/day per VM with a 51% profit margin over cloud compute costs.',
       governorTimingAdvice:
@@ -1931,11 +1933,11 @@ app.post('/api/gcloud/ai-optimize', async (req, res) => {
 Here are the current real-time metrics:
 - SOL Price: $${solPriceUsd} USD
 - $BASH Market Cap: $${tokenState.marketCapUsd} USD (Bonding curve progress: ${tokenState.bondingCurveProgressPct}% towards ${tokenState.graduationTargetSol} SOL Raydium graduation)
-- Active Google Cloud GCE Mining Fleet: ${summary.runningInstances} nodes, ${summary.totalRandomXKhs} kH/s RandomX, ${summary.totalkHeavyHashMhs} MH/s KAS
-- Google Cloud Cost: $${summary.totalCostPerHourUsd}/hr ($${(summary.totalCostPerHourUsd * 24).toFixed(2)}/day)
+- Active Base44 Mining Fleet: ${summary.runningInstances} nodes, ${summary.totalRandomXKhs} kH/s RandomX, ${summary.totalkHeavyHashMhs} MH/s KAS
+- Base44 Cost: $${summary.totalCostPerHourUsd}/hr ($${(summary.totalCostPerHourUsd * 24).toFixed(2)}/day)
 - Daily Mining Yield: ${summary.totalDailyYieldSol} SOL/day ($${summary.totalDailyYieldUsd}/day)
 - Net Daily Profit Margin: ${summary.avgNetMarginPct}%
-- Available Google Cloud Machine Types: c2-standard-8 (Intel Xeon), c2-standard-16, t2d-standard-8 (AMD Milan), g2-standard-8 (NVIDIA L4 24GB GPU)
+- Available Base44 Machine Types: c2-standard-8 (Intel Xeon), c2-standard-16, t2d-standard-8 (AMD Milan), g2-standard-8 (NVIDIA L4 24GB GPU)
 
 Provide an executive JSON optimization strategy with:
 1. recommendation (concise executive verdict)
@@ -1943,7 +1945,7 @@ Provide an executive JSON optimization strategy with:
 3. optimalAlgo (randomx or kheavyhash)
 4. expectedDailyRoiPct (number)
 5. spotRiskRating (LOW, MEDIUM, or HIGH)
-6. reasoning (clear explanation of Google Cloud cost vs crypto yield vs bonding curve impact)
+6. reasoning (clear explanation of Base44 cost vs crypto yield vs bonding curve impact)
 7. governorTimingAdvice (how to adjust capacity governor for highest price impact without dumping)
 8. tokenPumpImpactEstimate (quantified estimate of token price lift)
 Return ONLY raw JSON.`;
@@ -2131,15 +2133,15 @@ app.post('/api/mining/stratum-bridge/connect-all', (req, res) => {
   const workers = [
     'rig1',
     'unmineable_worker_gpu',
-    'gce-c2-us-central1-01',
-    'gce-c2-us-central1-02',
-    'gce-t2d-asia-se1-01',
-    'gce-c3-sapphire-rapids',
+    'base44-c2-us-central1-01',
+    'base44-c2-us-central1-02',
+    'base44-t2d-asia-se1-01',
+    'base44-c3-sapphire-rapids',
   ];
   stratumBridge.hookUpFleetWorkers(workers);
   res.json({
     ok: true,
-    message: `All ${workers.length} Google Mining Fleet workers commanded to hook up to unMineable Stratum!`,
+    message: `All ${workers.length} Base44 Mining Fleet workers commanded to hook up to unMineable Stratum!`,
     summary: stratumBridge.getSummary(),
   });
 });
@@ -2164,7 +2166,7 @@ app.post('/api/mining/stratum-bridge/hookup-worker', (req, res) => {
   });
 });
 
-// Real GCE VM Hookup Bash Script endpoint
+// Real Base44 VM Hookup Bash Script endpoint
 app.get('/api/gcloud/hookup/:workerName', (req, res) => {
   const workerName = req.params.workerName || 'unmineable_worker_gpu';
   const script = stratumBridge.generateHookupBashScript(workerName);
@@ -2585,7 +2587,7 @@ function stepRebalanceCycle(manualTrigger: boolean = false) {
     rebalanceCycle.phaseProgressPct = 0;
   }
   else if (rebalanceCycle.currentPhase === 'DIP_REBUY_35') {
-    // 35% sold from remaining 50% + pending Google Cloud mining SOL
+    // 35% sold from remaining 50% + pending Base44 mining SOL
     // Combined and immediately PUMPED BACK INTO THE COIN AT THE LOW
     const miningBonusSol = 0.08 + (gceFleet.reduce((acc, inst) => acc + (inst.dailyYieldSol / 48), 0));
     const dipRebuySol = parseFloat((rebalanceCycle.lastHarvestSol * 0.35 + miningBonusSol).toFixed(4));
@@ -2623,7 +2625,7 @@ function stepRebalanceCycle(manualTrigger: boolean = false) {
       type: 'rebuy_35',
       amountSol: dipRebuySol,
       amountUsd: dipRebuySol * solPriceUsd,
-      source: 'gcp_mining_dip_sniper',
+      source: 'base44_mining_dip_sniper',
       details: `Dip Pump Rebuy Executed: 35% (${(rebalanceCycle.lastHarvestSol * 0.35).toFixed(3)} SOL) + ${miningBonusSol.toFixed(3)} GCP Mining SOL pumped back at the dip! Bought ${tokensBought.toLocaleString()} $BASH`,
       txSignature: rebuySig,
       reserveAfter: flywheelState.buyback_reserve_sol,
