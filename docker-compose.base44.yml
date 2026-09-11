@@ -11,7 +11,7 @@ services:
       - NODE_ENV=development
       - PORT=3000
       - DISABLE_HMR=true
-      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=${BASE44_PUBLIC_HOST_SUFFIX}
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
     env_file:
       - ./.env.base44-defaults
       - /run/base44/app.env
